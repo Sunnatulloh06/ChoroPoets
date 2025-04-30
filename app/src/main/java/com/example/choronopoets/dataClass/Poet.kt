@@ -9,5 +9,6 @@ data class Poet(
     val centuryId: Int,
     val name: String,
     val bio: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val nationality: String
 )

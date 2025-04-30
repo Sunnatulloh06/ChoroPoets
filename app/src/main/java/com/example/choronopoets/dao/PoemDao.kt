@@ -12,6 +12,9 @@ interface PoemDao {
     @Query("SELECT * FROM poems WHERE poetId = :poetId")
     fun getPoemsByPoet(poetId: Int): Flow<List<Poems>>
 
+    @Query("SELECT * FROM poems WHERE id = :poemId")
+    fun getPoemsById(poemId: Int): Flow<Poems>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPoem(poem: Poems)
 }

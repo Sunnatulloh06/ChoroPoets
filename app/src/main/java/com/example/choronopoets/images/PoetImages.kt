@@ -24,7 +24,7 @@ val poetImages = listOf(
     R.drawable.fridrikh_shiller,
     R.drawable.zhan_zhak_russo,
     R.drawable.michael_lomonosov,
-    R.drawable.alexander_pushkin,
+    R.drawable.nikolai_nekrasov,
     R.drawable.viktor_mary_gyogo,
     R.drawable.iogann_volfgang_goethe,
     R.drawable.lermontov,

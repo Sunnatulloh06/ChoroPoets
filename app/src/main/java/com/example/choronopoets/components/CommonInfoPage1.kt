@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -24,23 +26,26 @@ fun CommonInfoPage1(
     imageResId: Int,
     bio: String,
     isDarkMode: Boolean
-){
+) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(top = 8.dp),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
+        ) {
             Image(
                 painter = painterResource(imageResId),
-                contentDescription = "Poets Image",
-                modifier = Modifier.size(180.dp)
+                contentDescription = "Poet Image",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(190.dp),
+                contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
@@ -48,7 +53,7 @@ fun CommonInfoPage1(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Medium,
                 fontFamily = FontFamily.SansSerif,
-                color = if(isDarkMode) Color.White else Color.Black
+                color = if (isDarkMode) Color.White else Color.Black
             )
         }
     }

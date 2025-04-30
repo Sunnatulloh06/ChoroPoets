@@ -17,4 +17,5 @@ class PoetryRepository(
     fun getPoetsByCentury(centuryId: Int): Flow<List<Poet>> = poetDao.getPoetsByCentury(centuryId)
     fun getPoemsByPoet(poetId: Int): Flow<List<Poems>> = poemDao.getPoemsByPoet(poetId)
     fun getPoetById(poetId: Int): Flow<Poet> = poetDao.getPoetById(poetId)
+    fun getPoemsById(poemId: Int): Flow<Poems> = poemDao.getPoemsById(poemId)
 }

@@ -34,7 +34,7 @@ fun NavigationScreen() {
             arguments = listOf(navArgument("poetId"){ type = NavType.IntType })
         ) { backStackEntry ->
             val poetId = backStackEntry.arguments?.getInt("poetId")?: 0
-            PoetDetailsScreen(navController = navController, viewModel = poetryViewModel, poetId)
+//            PoetDetailsScreen(navController = navController, viewModel = poetryViewModel, poetId)
         }
         composable(
             route = Screen.POEM_DETAIL_SCREEN.route,

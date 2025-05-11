@@ -36,49 +36,49 @@ fun PoemDetailScreen(navController: NavController, viewModel: PoetryViewModel, p
         viewModel.processEvent(PoetryUIEvent.LoadPoemById(poemId))
     }
 
-    Scaffold(
-        topBar = {
-            CommonTopBar(
-                title = poem?.title ?: "Неизвестный стих",
-                onBackClick = { navController.popBackStack() },
-                onToggleTheme = {
-                    viewModel.processEvent(PoetryUIEvent.ToggleTheme)
-                },
-                isDarkMode = state.isDarkMode,
-                titleFontSize = 32
-            )
-        },
-        containerColor = if (state.isDarkMode) Color(0xFF121212) else Color(0xFFF5F5F5)
-    ) { innerPadding ->
-        poem?.let { poem ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(scrollSate)
-                    .padding(innerPadding)
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = poem.title,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    color = if (state.isDarkMode) Color.White else Color.Black
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-                Text(
-                    text = poem.content,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = FontFamily.SansSerif,
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier.fillMaxSize(),
-                    color = if (state.isDarkMode) Color.White else Color.Black
-                )
-            }
-        }
-    }
+//    Scaffold(
+//        topBar = {
+//            CommonTopBar(
+//                title = poem?.title ?: "Неизвестный стих",
+//                onBackClick = { navController.popBackStack() },
+//                onToggleTheme = {
+//                    viewModel.processEvent(PoetryUIEvent.ToggleTheme)
+//                },
+//                isDarkMode = state.isDarkMode,
+//                titleFontSize = 32
+//            )
+//        },
+//        containerColor = if (state.isDarkMode) Color(0xFF121212) else Color(0xFFF5F5F5)
+//    ) { innerPadding ->
+//        poem?.let { poem ->
+//            Column(
+//                modifier = Modifier
+//                    .fillMaxSize()
+//                    .verticalScroll(scrollSate)
+//                    .padding(innerPadding)
+//                    .padding(16.dp),
+//                horizontalAlignment = Alignment.CenterHorizontally
+//            ) {
+//                Text(
+//                    text = poem.title,
+//                    fontSize = 24.sp,
+//                    fontWeight = FontWeight.SemiBold,
+//                    textAlign = TextAlign.Center,
+//                    modifier = Modifier.padding(vertical = 8.dp),
+//                    color = if (state.isDarkMode) Color.White else Color.Black
+//                )
+//                Spacer(modifier = Modifier.height(12.dp))
+//                Text(
+//                    text = poem.content,
+//                    fontSize = 20.sp,
+//                    fontWeight = FontWeight.Medium,
+//                    fontFamily = FontFamily.SansSerif,
+//                    textAlign = TextAlign.Start,
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = if (state.isDarkMode) Color.White else Color.Black
+//                )
+//            }
+//        }
+//    }
 }
 

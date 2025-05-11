@@ -3,6 +3,7 @@ package com.example.choronopoets.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.choronopoets.PoetryRepository
+import com.example.choronopoets.dataClass.Poet
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.launchIn
@@ -11,6 +12,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 
 class PoetryViewModel(private val repository: PoetryRepository) : ViewModel() {
+
+    private var allPoetsCashes: List<Poet> = emptyList()
 
     private val _state = MutableStateFlow(PoetryUIState())
     val state = _state.stateIn(
@@ -30,6 +33,7 @@ class PoetryViewModel(private val repository: PoetryRepository) : ViewModel() {
             is PoetryUIEvent.LoadPoetDetails -> loadPoetsDetails(event.poetId)
             is PoetryUIEvent.LoadPoems -> loadPoems(event.poetId)
             is PoetryUIEvent.LoadPoemById -> loadPoemById(event.poemId)
+            is PoetryUIEvent.SelectNationality -> loadSelectedNationality(event.nationality)
             is PoetryUIEvent.ToggleTheme ->
                 _state.update { it.copy(isDarkMode = !it.isDarkMode) }
         }
@@ -43,7 +47,8 @@ class PoetryViewModel(private val repository: PoetryRepository) : ViewModel() {
 
     private fun loadPoets(centuryId: Int) {
         repository.getPoetsByCentury(centuryId).onEach { poetsList ->
-            _state.update { it.copy(poets = poetsList) }
+            allPoetsCashes = poetsList
+            _state.update { it.copy(poets = poetsList, selectedNationality = null) }
         }.launchIn(viewModelScope)
     }
 
@@ -63,5 +68,19 @@ class PoetryViewModel(private val repository: PoetryRepository) : ViewModel() {
         repository.getPoemsById(poemsId).onEach { poem ->
             _state.update { it.copy(selectedPoem = poem) }
         }.launchIn(viewModelScope)
+    }
+
+    private fun loadSelectedNationality(nationality: String?) {
+        val filtered = if(nationality == null) {
+            allPoetsCashes
+        } else {
+            allPoetsCashes.filter { it.nationality == nationality }
+        }
+        _state.update {
+            it.copy(
+                poets = filtered,
+                selectedNationality = nationality
+            )
+        }
     }
 }

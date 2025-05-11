@@ -11,6 +11,7 @@ data class PoetryUIState(
     val poems: List<Poems> = emptyList(),
     val selectedPoet: Poet? = null,
     val selectedPoem: Poems? = null,
+    val selectedNationality: String? = null,
     val isLoading: Boolean = false,
     val error: String? = null
 )

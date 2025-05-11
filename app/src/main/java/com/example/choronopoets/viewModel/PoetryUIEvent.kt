@@ -6,5 +6,6 @@ sealed class PoetryUIEvent {
     data class LoadPoetDetails(val poetId: Int): PoetryUIEvent()
     data class LoadPoems(val poetId: Int): PoetryUIEvent()
     data class LoadPoemById(val poemId: Int) : PoetryUIEvent()
+    data class SelectNationality(val nationality: String?): PoetryUIEvent()
     data object ToggleTheme: PoetryUIEvent()
 }
